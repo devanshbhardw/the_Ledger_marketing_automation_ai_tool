@@ -1,0 +1,246 @@
+{
+  "reports": [
+    {
+      "key": "traffic-acquisition",
+      "name": "Traffic Acquisition",
+      "dimensions": [
+        "{channelGroup}",
+        "sessionSourceMedium"
+      ],
+      "metrics": [
+        "sessions",
+        "totalUsers",
+        "conversions",
+        "totalRevenue"
+      ],
+      "orderBy": "sessions",
+      "orderDesc": true,
+      "limit": 10,
+      "sheetTab": "Traffic Acquisition"
+    },
+    {
+      "key": "session-campaign",
+      "name": "Session Campaign",
+      "dimensions": [
+        "sessionCampaignName"
+      ],
+      "metrics": [
+        "sessions",
+        "transactions",
+        "totalRevenue"
+      ],
+      "computed": [
+        {
+          "key": "convRate",
+          "numerator": "transactions",
+          "denominator": "sessions",
+          "percent": true
+        }
+      ],
+      "orderBy": "sessions",
+      "orderDesc": true,
+      "limit": 25,
+      "sheetTab": "Session Campaign"
+    },
+    {
+      "key": "landing-page-overall",
+      "name": "Landing Page (Overall)",
+      "dimensions": [
+        "landingPagePlusQueryString"
+      ],
+      "metrics": [
+        "sessions",
+        "transactions",
+        "totalRevenue"
+      ],
+      "computed": [
+        {
+          "key": "convRate",
+          "numerator": "transactions",
+          "denominator": "sessions",
+          "percent": true
+        }
+      ],
+      "orderBy": "sessions",
+      "orderDesc": true,
+      "limit": 25,
+      "sheetTab": "Landing Page",
+      "stripQuery": true
+    },
+    {
+      "key": "landing-page-meta",
+      "name": "Landing Page: Meta Paid",
+      "dimensions": [
+        "landingPagePlusQueryString"
+      ],
+      "metrics": [
+        "sessions",
+        "transactions",
+        "totalRevenue"
+      ],
+      "computed": [
+        {
+          "key": "convRate",
+          "numerator": "transactions",
+          "denominator": "sessions",
+          "percent": true
+        }
+      ],
+      "filter": {
+        "dimension": "{channelGroup}",
+        "value": "Meta Paid"
+      },
+      "orderBy": "sessions",
+      "orderDesc": true,
+      "limit": 25,
+      "sheetTab": "Landing Meta Paid",
+      "stripQuery": true
+    },
+    {
+      "key": "landing-page-google",
+      "name": "Landing Page: Google Paid",
+      "dimensions": [
+        "landingPagePlusQueryString"
+      ],
+      "metrics": [
+        "sessions",
+        "transactions",
+        "totalRevenue"
+      ],
+      "computed": [
+        {
+          "key": "convRate",
+          "numerator": "transactions",
+          "denominator": "sessions",
+          "percent": true
+        }
+      ],
+      "filter": {
+        "dimension": "{channelGroup}",
+        "value": "Google Paid"
+      },
+      "orderBy": "sessions",
+      "orderDesc": true,
+      "limit": 25,
+      "sheetTab": "Landing Google Paid",
+      "stripQuery": true
+    },
+    {
+      "key": "device-category",
+      "name": "Device Category",
+      "dimensions": [
+        "deviceCategory"
+      ],
+      "metrics": [
+        "sessions",
+        "transactions",
+        "totalRevenue"
+      ],
+      "computed": [
+        {
+          "key": "convRate",
+          "numerator": "transactions",
+          "denominator": "sessions",
+          "percent": true
+        }
+      ],
+      "orderBy": "sessions",
+      "orderDesc": true,
+      "limit": 10,
+      "sheetTab": "Device Category"
+    },
+    {
+      "key": "product-enrichment",
+      "name": "Product Analysis",
+      "dimensions": [
+        "itemName",
+        "{channelGroup}"
+      ],
+      "metrics": [
+        "itemsViewed",
+        "itemsAddedToCart",
+        "itemsCheckedOut",
+        "itemsPurchased",
+        "itemRevenue"
+      ],
+      "orderBy": "itemsViewed",
+      "orderDesc": true,
+      "limit": 500,
+      "sheetTab": "Product Analysis"
+    },
+    {
+      "key": "moengage-one-time",
+      "name": "MoEngage One-Time",
+      "source": "moengage",
+      "campaignTypes": [
+        "ONE_TIME"
+      ],
+      "metricType": "TOTAL",
+      "dimensions": [
+        "campaignName"
+      ],
+      "metrics": [
+        "sent",
+        "delivered",
+        "opens",
+        "clicks",
+        "conversions"
+      ],
+      "computed": [
+        {
+          "key": "clickRate",
+          "numerator": "clicks",
+          "denominator": "delivered",
+          "percent": true
+        },
+        {
+          "key": "openRate",
+          "numerator": "opens",
+          "denominator": "delivered",
+          "percent": true
+        }
+      ],
+      "orderBy": "sent",
+      "orderDesc": true,
+      "limit": 50,
+      "sheetTab": "MoEngage One-Time"
+    },
+    {
+      "key": "moengage-flows",
+      "name": "MoEngage Flows",
+      "source": "moengage",
+      "campaignTypes": [
+        "FLOW"
+      ],
+      "metricType": "TOTAL",
+      "dimensions": [
+        "campaignName"
+      ],
+      "metrics": [
+        "sent",
+        "delivered",
+        "opens",
+        "clicks",
+        "conversions"
+      ],
+      "computed": [
+        {
+          "key": "clickRate",
+          "numerator": "clicks",
+          "denominator": "delivered",
+          "percent": true
+        },
+        {
+          "key": "openRate",
+          "numerator": "opens",
+          "denominator": "delivered",
+          "percent": true
+        }
+      ],
+      "orderBy": "sent",
+      "orderDesc": true,
+      "limit": 50,
+      "sheetTab": "MoEngage Flows"
+    }
+  ]
+}

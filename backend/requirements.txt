@@ -1,0 +1,14 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+google-analytics-data==0.18.16
+google-analytics-admin==0.24.0
+google-auth==2.37.0
+google-api-python-client==2.156.0
+anthropic==0.116.0
+redis==5.2.1
+httpx==0.28.1
+cryptography==44.0.0
+pydantic==2.10.4
+pydantic-settings==2.7.1
+python-dotenv==1.0.1
+APScheduler==3.11.0

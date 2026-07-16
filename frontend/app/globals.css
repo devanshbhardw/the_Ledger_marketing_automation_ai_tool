@@ -1,0 +1,359 @@
+/* The Ledger palette — one ink/paper theme for the whole app. The generic
+   component vars (--surface-*, --border, --accent, …) are pointed at the
+   ledger tokens so every existing component picks the theme up. */
+:root {
+  --ink: #1F231F;
+  --paper: #F2ECDD;
+  --marigold: #E0913C;
+  --madder: #AE4238;
+  --indigo: #37517E;
+  --turmeric: #CB9B2E;
+
+  --surface-0: var(--ink);
+  --surface-1: #272C27;
+  --border: rgba(242, 236, 221, 0.16);
+  --text-primary: var(--paper);
+  --text-secondary: rgba(242, 236, 221, 0.72);
+  --text-muted: rgba(242, 236, 221, 0.5);
+  --series-1: var(--marigold);
+  --accent: var(--marigold);
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; background: var(--surface-1);
+  border-bottom: 1px solid var(--border);
+}
+.topbar h1 { font-size: 18px; margin: 0; font-weight: 600; font-family: var(--font-fraunces), Georgia, serif; }
+
+.btn {
+  border: 1px solid var(--border); background: var(--surface-1);
+  color: var(--text-primary); padding: 8px 14px; border-radius: 8px;
+  font-size: 14px; cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn-primary { background: var(--accent); color: var(--ink); border-color: var(--accent); font-weight: 600; }
+
+.controls { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin: 20px 0; }
+.field label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+.field select, .field input {
+  padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface-1); color: var(--text-primary); font-size: 14px; min-width: 180px;
+}
+
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 20px; flex-wrap: wrap; }
+.tab {
+  padding: 10px 16px; border: none; background: none; cursor: pointer;
+  color: var(--text-secondary); font-size: 14px; border-bottom: 2px solid transparent;
+}
+.tab.active { color: var(--text-primary); border-bottom-color: var(--accent); font-weight: 600; }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.kpi { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.kpi .label { font-size: 12px; color: var(--text-secondary); }
+.kpi .value { font-size: 26px; font-weight: 680; margin-top: 6px; letter-spacing: -0.02em; }
+
+.card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin-bottom: 24px; }
+.card h3 { margin: 0 0 14px; font-size: 14px; font-weight: 640; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--text-secondary); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table-wrap { overflow-x: auto; }
+
+.demo-banner {
+  background: rgba(203, 155, 46, 0.14); color: var(--turmeric);
+  border: 1px solid rgba(203, 155, 46, 0.45);
+  padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px;
+}
+
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+
+.section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 12px; }
+.section-head h3 { margin: 0; }
+.section-toggle {
+  border: none; background: none; cursor: pointer; padding: 0;
+  font-size: 15px; font-weight: 640; color: var(--text-primary);
+  display: flex; align-items: center; gap: 8px; text-align: left;
+}
+.section-toggle .caret { color: var(--text-secondary); font-size: 12px; width: 12px; }
+.section-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.compare-toggle {
+  display: flex; align-items: center; gap: 6px; font-size: 13px;
+  color: var(--text-secondary); cursor: pointer; white-space: nowrap;
+}
+.compare-toggle input { cursor: pointer; }
+
+.pager { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+
+.add-form h3 { margin-top: 0; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 14px; }
+.form-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--text-secondary); }
+.form-grid label.wide { grid-column: 1 / -1; }
+.form-grid input {
+  padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface-0); color: var(--text-primary); font-size: 14px;
+}
+.form-actions { display: flex; gap: 10px; }
+
+th.grp { text-align: center; border-bottom: 2px solid var(--accent); font-weight: 650; }
+.total-row td { font-weight: 700; border-top: 2px solid var(--border); }
+
+.insights { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 14px; }
+.insights-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.insight { margin: 6px 0; font-size: 14px; line-height: 1.5; }
+
+.muted { color: var(--text-muted); font-size: 13px; }
+
+/* ------------------------------------------------------------------------ */
+/* The Ledger — dashboard landing page (card index).                         */
+/* ------------------------------------------------------------------------ */
+.ledger-container { max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; }
+
+.ledger-container > h1 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  font-size: 34px;
+  margin: 0 0 4px;
+  color: var(--paper);
+}
+.ledger-sub { color: color-mix(in srgb, var(--paper) 55%, transparent); font-size: 13px; margin: 0 0 28px; }
+
+.ledger-search { margin-bottom: 28px; max-width: 380px; }
+.ledger-search label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--turmeric);
+  margin-bottom: 6px;
+}
+.ledger-search input {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--paper) 35%, transparent);
+  color: var(--paper);
+  font: inherit;
+  font-size: 16px;
+  padding: 6px 2px;
+  outline: none;
+}
+.ledger-search input:focus { border-bottom-color: var(--marigold); }
+.ledger-search input::placeholder { color: color-mix(in srgb, var(--paper) 35%, transparent); }
+
+.ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.ledger-card {
+  position: relative;
+  display: block;
+  text-align: left;
+  background: color-mix(in srgb, var(--paper) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+  border-radius: 12px;
+  padding: 20px 18px 16px;
+  color: var(--paper);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.ledger-card:hover { border-color: var(--marigold); transform: translateY(-2px); }
+
+.ledger-card h2 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.2;
+  margin: 0 0 2px;
+  padding-right: 52px; /* keep clear of the stamp */
+  color: var(--paper);
+}
+.ledger-pid {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+  margin: 0 0 14px;
+}
+
+.ledger-spark { width: 100%; height: 30px; display: block; margin-bottom: 12px; }
+.ledger-spark polyline { fill: none; stroke: var(--marigold); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.ledger-spark-empty { height: 30px; margin-bottom: 12px; }
+
+.ledger-stamp {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--marigold);
+  color: var(--marigold);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transform: rotate(-8deg);
+}
+/* OAuth stamps are indigo; the text is tinted toward paper so it stays
+   legible on the ink background. */
+.ledger-stamp.oauth {
+  border-color: var(--indigo);
+  color: color-mix(in srgb, var(--indigo) 40%, var(--paper));
+}
+
+.ledger-updated {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 50%, transparent);
+  margin: 0;
+}
+
+.ledger-add {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  min-height: 150px;
+  border: 1.5px dashed color-mix(in srgb, var(--paper) 30%, transparent);
+  border-radius: 12px;
+  background: none;
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
+  text-decoration: none;
+  font-size: 14px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.ledger-add:hover { border-color: var(--marigold); color: var(--marigold); }
+.ledger-add .plus { font-size: 28px; font-weight: 300; line-height: 1; }
+
+.ledger-empty { color: color-mix(in srgb, var(--paper) 55%, transparent); font-size: 14px; }
+
+/* Ask answers — rendered markdown (tables inherit the global table styles) */
+.ask-answer { font-size: 14px; line-height: 1.55; overflow-x: auto; }
+.ask-answer > :first-child { margin-top: 0; }
+.ask-answer h1, .ask-answer h2, .ask-answer h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 16px 0 8px;
+}
+.ask-answer p { margin: 8px 0; }
+.ask-answer table { margin: 10px 0; }
+.ask-answer td, .ask-answer th { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ask-answer code {
+  background: rgba(242, 236, 221, 0.08);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.ask-answer ul, .ask-answer ol { margin: 8px 0; padding-left: 22px; }
+
+/* ------------------------------------------------------------------------ */
+/* App shell — left sidebar + content                                        */
+/* ------------------------------------------------------------------------ */
+.shell { display: flex; min-height: 100vh; }
+
+.side {
+  width: 230px;
+  flex-shrink: 0;
+  background: #1A1D1A; /* a step darker than --ink */
+  border-right: 1px solid var(--border);
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.side-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px 18px;
+}
+.side-brand {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--paper);
+  text-decoration: none;
+}
+.side-plus {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px dashed var(--border);
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1;
+}
+.side-plus:hover, .side-plus.active { border-color: var(--marigold); color: var(--marigold); }
+
+.side-head {
+  padding: 14px 10px 4px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--turmeric);
+}
+
+.side-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+}
+.side-nav a:hover { color: var(--text-primary); background: rgba(242, 236, 221, 0.06); }
+.side-nav a.active {
+  color: var(--marigold);
+  background: rgba(224, 145, 60, 0.12);
+  font-weight: 600;
+}
+
+.side-sub a { padding-left: 26px; font-size: 13px; }
+
+.side-foot { margin-top: auto; padding: 14px 10px 4px; font-size: 11px; color: var(--text-muted); }
+
+.content { flex: 1; min-width: 0; }
+
+@media (max-width: 860px) {
+  .shell { flex-direction: column; }
+  .side { width: auto; height: auto; position: static; flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .side-brand { padding: 4px 10px; }
+  .side-head, .side-foot { display: none; }
+  .side-sub a { padding-left: 10px; }
+}
+.center { min-height: 60vh; display: grid; place-items: center; text-align: center; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-secondary); }

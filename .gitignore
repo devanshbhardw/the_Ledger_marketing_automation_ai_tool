@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# next.js
+frontend/.next/
+frontend/out/
+
+# python
+backend/.venv/
+**/__pycache__/
+*.pyc
+
+# env
+.env
+.env.local
+.env.*.local
+
+# service-account key + runtime state (never commit these)
+backend/service-account.json
+backend/profiles.json
+backend/report_defs.json
+ttk_reports_state.json
+ttkprestigega4-90e7f0d1c6a.json
+ttkprestigega4-902d94eb588a.json
+
+# misc
+.DS_Store
+*.log
+
+# vscode
+profiles.json
